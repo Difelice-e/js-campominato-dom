@@ -5,6 +5,11 @@ let numberGrid;
 
 let bombList = [];
 
+let result = document.querySelector('.result');
+let score = 0;
+
+
+
 // ------ FUNZIONI ------
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -54,8 +59,10 @@ function selectThisGrid(event) {
     if (bombList.includes(parseInt(squareWrapper.innerHTML))) {
         squareWrapper.classList.add("bomb");
         gameWrapper.removeEventListener('click', selectThisGrid);
+        result.append(`Il tuo punteggio è ${score}`);
     } else {
         squareWrapper.classList.add("selected");
+        score = score + 1;
     }
     console.dir(squareWrapper);
 }

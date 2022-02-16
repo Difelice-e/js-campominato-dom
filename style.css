@@ -16,6 +16,11 @@ body {
     padding: 20px 0;
 }
 
+.main-game {
+    display: flex;
+    flex-direction: column;
+}
+
 header .row {
     display: flex;
     justify-content: space-between;
@@ -64,4 +69,11 @@ main {
 .bomb {
     background-color: red;
     color: black;
+}
+
+.result {
+    color: black;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
 }
