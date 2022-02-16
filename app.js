@@ -8,6 +8,8 @@ let bombList = [];
 let result = document.querySelector('.result');
 let score = 0;
 
+// let cell = [];
+
 
 
 // ------ FUNZIONI ------
@@ -64,11 +66,23 @@ function endGameLose() {
     result.append(`Hai perso! Il tuo punteggio è ${score}`);
 }
 
+function bombReveal() {
+    let cells = document.getElementsByClassName('element');
+    for(let i = 0; i < cells.length; i++){
+        if (bombList.includes(parseInt(cells[i].innerHTML))) {
+        cells[i].classList.add('bomb');
+        }
+    }
+}
+
+
+
 function selectThisGrid(event) {
     const squareWrapper = event.target;
     if (bombList.includes(parseInt(squareWrapper.innerHTML))) {
         squareWrapper.classList.add("bomb");
-            endGameLose();
+        endGameLose();
+        bombReveal();
     } else if (!squareWrapper.classList.contains("selected")) {
         squareWrapper.classList.add("selected");
         score = score + 1;
@@ -89,8 +103,3 @@ function play() {
 
 // ------ SEZIONE OPERATIVA ------
 document.getElementById("play").addEventListener("click", play);
-
-
-
-// (!squareWrapper.classList.contains("selected")) {
-//     squareWrapper.classList.add('selected'); controllo se già class listata
