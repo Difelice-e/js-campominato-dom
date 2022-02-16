@@ -54,15 +54,27 @@ function getGrid(numberGrid) {
     }
 }
 
+function endGameWin() {
+    gameWrapper.removeEventListener('click', selectThisGrid);
+    result.append(`Hai vinto! Il tuo punteggio è ${score}`);
+}
+
+function endGameLose() {
+    gameWrapper.removeEventListener('click', selectThisGrid);
+    result.append(`Hai perso! Il tuo punteggio è ${score}`);
+}
+
 function selectThisGrid(event) {
     const squareWrapper = event.target;
     if (bombList.includes(parseInt(squareWrapper.innerHTML))) {
         squareWrapper.classList.add("bomb");
-        gameWrapper.removeEventListener('click', selectThisGrid);
-        result.append(`Il tuo punteggio è ${score}`);
-    } else {
+            endGameLose();
+    } else if (!squareWrapper.classList.contains("selected")) {
         squareWrapper.classList.add("selected");
         score = score + 1;
+        if (score == Math.pow(numberGrid, 2) - 16) {
+            endGameWin();
+        }
     }
     console.dir(squareWrapper);
 }
