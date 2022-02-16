@@ -54,7 +54,7 @@ function getGrid(numberGrid) {
 
 function endGameWin() {
     gameWrapper.removeEventListener('click', selectThisGrid);
-    result.append(`Hai vinto! Il tuo punteggio è ${score}`);
+    result.innerHTML = `Hai vinto! Il tuo punteggio è ${score}`;
 }
 
 function endGameLose() {
