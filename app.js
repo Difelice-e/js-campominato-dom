@@ -88,6 +88,7 @@ function selectThisGrid(event) {
         score = score + 1;
         if (score == Math.pow(numberGrid, 2) - 16) {
             endGameWin();
+            bombReveal();
         }
     }
     console.dir(squareWrapper);
