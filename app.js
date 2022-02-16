@@ -8,10 +8,6 @@ let bombList = [];
 let result = document.querySelector('.result');
 let score = 0;
 
-// let cell = [];
-
-
-
 // ------ FUNZIONI ------
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -63,7 +59,7 @@ function endGameWin() {
 
 function endGameLose() {
     gameWrapper.removeEventListener('click', selectThisGrid);
-    result.append(`Hai perso! Il tuo punteggio è ${score}`);
+    result.innerHTML = `Hai perso! Il tuo punteggio è ${score}`;
 }
 
 function bombReveal() {
@@ -74,8 +70,6 @@ function bombReveal() {
         }
     }
 }
-
-
 
 function selectThisGrid(event) {
     const squareWrapper = event.target;
@@ -98,9 +92,9 @@ function play() {
     getGameMode();
     getGrid(numberGrid);
     createBomb();
+    score = 0;
     gameWrapper.addEventListener('click', selectThisGrid);
 }
-
 
 // ------ SEZIONE OPERATIVA ------
 document.getElementById("play").addEventListener("click", play);
